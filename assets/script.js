@@ -7,9 +7,9 @@ var currentWind = document.querySelector("#currentWind");
 var currentUv = document.querySelector("#currentUv");
 
 function searchCity(cityInput) {
-    var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=acf5ece419aae6c97ae296eb5d196fa0";
-
     var cityInput = cityName.value.trim();
+
+    var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=acf5ece419aae6c97ae296eb5d196fa0";
 
     if(cityInput) {
         fetch(apiUrl).then(function(response) {
