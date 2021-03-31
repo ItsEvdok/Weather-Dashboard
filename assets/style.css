@@ -19,7 +19,16 @@ header {
 }
 
 .side h2 {
-    font-size: 28px;
+    font-size: 20px;
+}
+
+.cityInput {
+    margin-left: 5px;
+}
+
+.searchBtn {
+    height: 30px;
+    width: 30px;
 }
 
 .cities p {
@@ -64,6 +73,7 @@ footer {
     height: 200px;
     background-color: rgb(0, 119, 255);
     color: white;
+    margin-top: 10px;
 }
 
 .days h3,
