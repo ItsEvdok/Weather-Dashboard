@@ -43,6 +43,7 @@ function displayCity() {
         response.json().then(function(data){
             console.log(data);
 
+            // display cities current weather data
             currentCity.textContent = cityName.value + " " + data.daily[0].dt;
             currentTemp.textContent = 'Temperature: ' + data.current.temp;
             currentHum.textContent = 'Humidity: ' + data.current.humidity + '%';
