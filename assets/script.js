@@ -19,9 +19,13 @@ function searchCity(cityInput) {
             response.json().then(function(data){
                 displayInfo(data, cityInput)
                 console.log(data);
+                console.log(data.coord[0].value);
 
                 currentLat.textContent = data.coord.lat;
                 currentLon.textContent = data.coord.lon;
+
+                console.log(currentLat);
+                console.log(currentLon);
             });
         });
     } else {
