@@ -76,22 +76,37 @@ function displayCity() {
             currentWind.textContent = 'Windspeed: ' + data.current.wind_speed + 'mph';
             currentUv.textContent = data.current.uvi;
 
+            oneDailyDate = dayjs.unix(data.daily[1].dt).format("M/DD/YYYY");
+
+            oneDate.textContent = oneDailyDate;
             oneTemp.textContent = 'Temp: ' + data.daily[1].temp.eve + 'F';
             oneHum.textContent = 'Humidity: ' + data.daily[1].humidity + '%';
             oneWind.textContent = 'Wind: ' + data.daily[1].wind_speed + 'mph';
+
+            twoDailyDate = dayjs.unix(data.daily[2].dt).format("M/DD/YYYY");
             
+            twoDate.textContent = twoDailyDate;
             twoTemp.textContent = 'Temp: ' + data.daily[2].temp.eve + 'F';
             twoHum.textContent = 'Humidity: ' + data.daily[2].humidity + '%';
             twoWind.textContent = 'Wind: ' + data.daily[2].wind_speed + 'mph';
 
+            threeDailyDate = dayjs.unix(data.daily[3].dt).format("M/DD/YYYY");
+
+            threeDate.textContent = threeDailyDate;
             threeTemp.textContent = 'Temp: ' + data.daily[3].temp.eve + 'F';
             threeHum.textContent = 'Humidity: ' + data.daily[3].humidity + '%';
             threeWind.textContent = 'Wind: ' + data.daily[3].wind_speed + 'mph';
 
+            fourDailyDate = dayjs.unix(data.daily[4].dt).format("M/DD/YYYY");
+
+            fourDate.textContent = fourDailyDate;
             fourTemp.textContent = 'Temp: ' + data.daily[4].temp.eve + 'F';
             fourHum.textContent = 'Humidity: ' + data.daily[4].humidity + '%';
             fourWind.textContent = 'Wind: ' + data.daily[4].wind_speed + 'mph';
 
+            fiveDailyDate = dayjs.unix(data.daily[5].dt).format("M/DD/YYYY");
+
+            fiveDate.textContent = fiveDailyDate;
             fiveTemp.textContent = 'Temp: ' + data.daily[5].temp.eve + 'F';
             fiveHum.textContent = 'Humidity: ' + data.daily[5].humidity + '%';
             fiveWind.textContent = 'Wind: ' + data.daily[5].wind_speed + 'mph';
