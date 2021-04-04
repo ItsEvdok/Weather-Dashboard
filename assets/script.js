@@ -68,11 +68,13 @@ function displayCity() {
         response.json().then(function(data){
             console.log(data);
 
-            currentCity.textContent = cityName.value;
+            newDate = dayjs.unix(data.current.dt).format("M/DD/YYYY");
+
+            currentCity.textContent = cityName.value + " " + newDate;
             currentTemp.textContent = 'Temperature: ' + data.current.temp;
             currentHum.textContent = 'Humidity: ' + data.current.humidity + '%';
             currentWind.textContent = 'Windspeed: ' + data.current.wind_speed + 'mph';
-            currentUv.textContent = "UV Index: " + data.current.uvi;
+            currentUv.textContent = data.current.uvi;
 
             oneTemp.textContent = 'Temp: ' + data.daily[1].temp.eve + 'F';
             oneHum.textContent = 'Humidity: ' + data.daily[1].humidity + '%';
@@ -93,6 +95,14 @@ function displayCity() {
             fiveTemp.textContent = 'Temp: ' + data.daily[5].temp.eve + 'F';
             fiveHum.textContent = 'Humidity: ' + data.daily[5].humidity + '%';
             fiveWind.textContent = 'Wind: ' + data.daily[5].wind_speed + 'mph';
+
+            if(data.current.uvi > 6) {
+                currentUv.style.backgroundColor = "red";
+            } else if (data.current.uvi > 2 && data.current.uvi < 6) {
+                currentUv.style.backgroundColor = "orange";
+            } else {
+                currentUv.style.backgroundColor = "green";
+            }
 
         })
     })
