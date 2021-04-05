@@ -31,6 +31,13 @@ var fiveTemp= document.querySelector("#fiveTemp");
 var fiveHum= document.querySelector("#fiveHum");
 var fiveWind= document.querySelector("#fiveWind");
 
+var iconCurrent = document.querySelector("#iconCurrent");
+var iconOne = document.querySelector("#iconOne");
+var iconTwo = document.querySelector("#iconTwo");
+var iconThree = document.querySelector("#iconThree");
+var iconFour = document.querySelector("#iconFour");
+var iconFive = document.querySelector("#iconFive");
+
 var currentLat = [];
 var currentLon = [];
 
@@ -65,16 +72,17 @@ function displayCity() {
         response.json().then(function(data){
             console.log(data);
 
-            console.log(data.current.weather[0].icon);
-
+            // new date formar
             newDate = dayjs.unix(data.current.dt).format("M/DD/YYYY");
 
+            // display of current day
             currentCity.textContent = cityName.value + " " + newDate;
             currentTemp.textContent = 'Temperature: ' + data.current.temp;
             currentHum.textContent = 'Humidity: ' + data.current.humidity + '%';
             currentWind.textContent = 'Windspeed: ' + data.current.wind_speed + 'mph';
             currentUv.textContent = data.current.uvi;
 
+            // 5 day forecast info display
             oneDailyDate = dayjs.unix(data.daily[1].dt).format("M/DD/YYYY");
 
             oneDate.textContent = oneDailyDate;
@@ -110,6 +118,7 @@ function displayCity() {
             fiveHum.textContent = 'Humidity: ' + data.daily[5].humidity + '%';
             fiveWind.textContent = 'Wind: ' + data.daily[5].wind_speed + 'mph';
 
+            // uv index background check
             if(data.current.uvi > 6) {
                 currentUv.style.backgroundColor = "red";
             } else if (data.current.uvi > 2 && data.current.uvi < 6) {
@@ -117,6 +126,31 @@ function displayCity() {
             } else {
                 currentUv.style.backgroundColor = "green";
             }
+
+            // weather icons
+            var currentIconCode = data.current.weather[0].icon;
+            var iconUrl = "http://openweathermap.org/img/w/" + currentIconCode + ".png";
+            iconCurrent.setAttribute('src', iconUrl);
+            
+            var oneIconCode = data.daily[1].weather[0].icon;
+            var iconOneUrl = "http://openweathermap.org/img/w/" + oneIconCode + ".png";
+            iconOne.setAttribute('src', iconOneUrl);
+
+            var twoIconCode = data.daily[2].weather[0].icon;
+            var iconTwoUrl = "http://openweathermap.org/img/w/" + twoIconCode + ".png";
+            iconTwo.setAttribute('src', iconTwoUrl);
+
+            var threeIconCode = data.daily[3].weather[0].icon;
+            var iconThreeUrl = "http://openweathermap.org/img/w/" + threeIconCode + ".png";
+            iconThree.setAttribute('src', iconThreeUrl);
+
+            var fourIconCode = data.daily[4].weather[0].icon;
+            var iconFourUrl = "http://openweathermap.org/img/w/" + fourIconCode + ".png";
+            iconFour.setAttribute('src', iconFourUrl);
+
+            var fiveIconCode = data.daily[5].weather[0].icon;
+            var iconFiveUrl = "http://openweathermap.org/img/w/" + fiveIconCode + ".png";
+            iconFive.setAttribute('src', iconFiveUrl);
 
         })
     })
