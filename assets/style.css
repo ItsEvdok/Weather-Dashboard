@@ -31,7 +31,7 @@ header {
     width: 30px;
 }
 
-.cities button {
+.cities p {
     border: 1px solid pink;
     margin: 5px;
     padding: 10px;

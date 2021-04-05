@@ -124,7 +124,7 @@ function displayCity() {
 
 function displayInfo() {
     // displays past cities inputs
-    var newCity = document.createElement("button");
+    var newCity = document.createElement("p");
     newCity.textContent = cityName.value;
     
     pastCitites.appendChild(newCity);
