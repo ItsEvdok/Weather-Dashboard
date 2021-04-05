@@ -40,7 +40,7 @@ function searchCity(cityInput) {
 
     var cityInput = cityName.value.trim();
 
-    var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&units=imperial&appid=acf5ece419aae6c97ae296eb5d196fa0";
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&units=imperial&appid=acf5ece419aae6c97ae296eb5d196fa0";
 
     if(cityInput) {
         fetch(apiUrl).then(function(response) {
