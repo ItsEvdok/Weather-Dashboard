@@ -50,9 +50,6 @@ function searchCity(cityInput) {
                 currentLat.push(data.coord.lat);
                 currentLon.push(data.coord.lon);
 
-                console.log(currentLat[0]);
-                console.log(currentLon[0]);
-
                 displayCity();
             });
         });
@@ -67,6 +64,8 @@ function displayCity() {
     fetch(apiUrlTwo).then(function(response){
         response.json().then(function(data){
             console.log(data);
+
+            console.log(data.current.weather[0].icon);
 
             newDate = dayjs.unix(data.current.dt).format("M/DD/YYYY");
 
@@ -125,9 +124,9 @@ function displayCity() {
 
 function displayInfo() {
     // displays past cities inputs
-    var newCity = document.createElement("p");
+    var newCity = document.createElement("button");
     newCity.textContent = cityName.value;
     
     pastCitites.appendChild(newCity);
-}
+};
 
