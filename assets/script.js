@@ -77,7 +77,7 @@ function displayCity() {
 
             // display of current day
             currentCity.textContent = cityName.value + " " + newDate;
-            currentTemp.textContent = 'Temperature: ' + data.current.temp;
+            currentTemp.textContent = 'Temperature: ' + data.current.temp + 'F';
             currentHum.textContent = 'Humidity: ' + data.current.humidity + '%';
             currentWind.textContent = 'Windspeed: ' + data.current.wind_speed + 'mph';
             currentUv.textContent = data.current.uvi;
