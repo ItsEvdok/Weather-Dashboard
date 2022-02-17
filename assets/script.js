@@ -40,6 +40,11 @@ var iconFive = document.querySelector("#iconFive");
 
 var currentLat = [];
 var currentLon = [];
+//var savedCities = [];
+
+var saveCity = function(){
+    localStorage.setItem("city", JSON.stringify(savedCities));
+};
 
 function searchCity(cityInput) {
     currentLat = [];
@@ -53,9 +58,11 @@ function searchCity(cityInput) {
         fetch(apiUrl).then(function(response) {
             response.json().then(function(data){
                 displayInfo(data, cityInput)
-                console.log(data);
+                savedCities.push(data.name);
                 currentLat.push(data.coord.lat);
                 currentLon.push(data.coord.lon);
+
+                saveCity(savedCities);
 
                 displayCity();
             });
