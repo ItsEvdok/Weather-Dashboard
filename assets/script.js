@@ -40,7 +40,8 @@ var iconFive = document.querySelector("#iconFive");
 
 var currentLat = [];
 var currentLon = [];
-//var savedCities = [];
+var savedCities = [];
+var city = "";
 
 var saveCity = function(){
     localStorage.setItem("city", JSON.stringify(savedCities));
@@ -57,7 +58,7 @@ function searchCity(cityInput) {
     if(cityInput) {
         fetch(apiUrl).then(function(response) {
             response.json().then(function(data){
-                displayInfo(data, cityInput)
+                // displayInfo(data, cityInput)
                 savedCities.push(data.name);
                 currentLat.push(data.coord.lat);
                 currentLon.push(data.coord.lon);
@@ -163,11 +164,32 @@ function displayCity() {
     })
 }
 
+// function addToList(c){
+//     console.log(c);
+//     var listEl= $("<li>"+c.toUpperCase()+"</li>");
+//     $(listEl).attr("class","list-group-item");
+//     $(listEl).attr("data-value",c.toUpperCase());
+//     // $(".list-group").append(listEl);
+//     pastCitites.appendChild(listEl);
+// };
+
 function displayInfo() {
     // displays past cities inputs
-    var newCity = document.createElement("p");
+    var newCity = document.createElement("li");
     newCity.textContent = cityName.value;
-    
+    newCity.onclick = loadLastCity();
     pastCitites.appendChild(newCity);
+};
+
+function loadLastCity() {
+    var sCity = JSON.parse(localStorage.getItem("city"));
+    if (sCity !== null) {
+        sCity=JSON.parse(localStorage.getItem("city"));
+        for(i=0; i < sCity.length; i++){
+            addToList(sCity[i]);
+        }
+        city = sCity[i-1];
+        searchCity(city);
+    }
 };
 
